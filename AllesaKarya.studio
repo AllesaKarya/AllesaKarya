@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AllesaKarya | Jasa Desain & Bangun Rumah Palembang</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --primary-color: #0f2e53; /* Biru Navy Teknik Sipil */
+            --accent-color: #d4a017; /* Emas Konstruksi */
+            --text-dark: #333333;
+            --text-light: #666666;
+            --white: #ffffff;
+            --light-bg: #f8f9fa;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* --- HEADER --- */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo { font-size: 24px; font-weight: 800; color: var(--primary-color); letter-spacing: 1px; }
+        .logo span { color: var(--accent-color); }
+
+        .nav-menu { display: flex; gap: 30px; }
+        .nav-link { font-weight: 500; transition: 0.3s; font-size: 14px; text-transform: uppercase; }
+        .nav-link:hover { color: var(--accent-color); }
+
+        .btn-cta {
+            background-color: var(--accent-color);
+            color: var(--white);
+            padding: 10px 25px;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .btn-cta:hover { background-color: #b88a10; }
+        .hamburger { display: none; cursor: pointer; font-size: 24px; }
+
+        /* --- HERO --- */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(15, 46, 83, 0.8), rgba(15, 46, 83, 0.7)), url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            margin-top: 80px;
+        }
+        .hero-content { max-width: 800px; margin: 0 auto; }
+        .hero h1 { font-size: 48px; color: var(--white); margin-bottom: 20px; line-height: 1.2; }
+        .hero p { font-size: 18px; margin-bottom: 30px; opacity: 0.9; }
+
+        /* --- SECTIONS --- */
+        .section { padding: 80px 0; }
+        .bg-light { background-color: var(--light-bg); }
+        .section-title { text-align: center; margin-bottom: 60px; }
+        .section-title h2 { font-size: 36px; margin-bottom: 10px; }
+        .section-title p { color: var(--accent-color); font-weight: bold; text-transform: uppercase; letter-spacing: 2px; }
+
+        /* --- ABOUT --- */
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+        .about-img img { width: 100%; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .about-text h3 { margin-bottom: 15px; font-size: 28px; }
+        .about-text p { margin-bottom: 15px; color: var(--text-light); }
+        
+        .stats { display: flex; gap: 20px; margin-top: 30px; }
+        .stat-item { text-align: center; background: var(--white); padding: 15px; border-radius: 5px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); flex: 1; }
+        .stat-item h4 { color: var(--accent-color); font-size: 24px; margin-bottom: 5px; }
+
+        /* --- SERVICES --- */
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+        .service-card { background: var(--white); padding: 40px 30px; border-radius: 10px; text-align: center; transition: 0.3s; border-bottom: 3px solid transparent; box-shadow: 0 5px 20px rgba(0,0,0,0.05); }
+        .service-card:hover { transform: translateY(-10px); border-bottom: 3px solid var(--accent-color); }
+        .service-icon { font-size: 40px; color: var(--primary-color); margin-bottom: 20px; }
+
+        /* --- PORTFOLIO --- */
+        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .portfolio-item { position: relative; overflow: hidden; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .portfolio-item img { width: 100%; height: 250px; object-fit: cover; transition: 0.5s; }
+        .portfolio-overlay { position: absolute; bottom: 0; left: 0; width: 100%; background: linear-gradient(to top, rgba(15,46,83,0.9), transparent); padding: 20px; color: var(--white); }
+        .portfolio-item:hover img { transform: scale(1.1); }
+        .portfolio-overlay h4 { color: var(--white); font-size: 18px; margin-bottom: 5px; }
+        .portfolio-overlay p { font-size: 14px; opacity: 0.8; }
+
+        /* --- WORKFLOW & CONTACT --- */
+        .timeline { position: relative; max-width: 800px; margin: 0 auto; }
+        .timeline-item { display: flex; gap: 20px; margin-bottom: 30px; align-items: flex-start; }
+        .step-number { background: var(--primary-color); color: var(--white); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0; }
+        
+        .contact-container { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
+        .contact-info-item { display: flex; align-items: center; margin-bottom: 20px; }
+        .contact-info-item i { width: 40px; height: 40px; background: var(--light-bg); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--primary-color); margin-right: 15px; }
+        .map-container { width: 100%; height: 300px; background: #ddd; border-radius: 10px; overflow: hidden; }
+        
+        footer { background: var(--primary-color); color: var(--white); padding: 50px 0 20px; text-align: center; }
+        footer p { opacity: 0.7; font-size: 14px; margin-top: 20px; }
+
+        @media (max-width: 768px) {
+            .nav-menu { display: none; flex-direction: column; position: absolute; top: 80px; left: 0; width: 100%; background: var(--white); padding: 20px; box-shadow: 0 5px 10px rgba(0,0,0,0.1); }
+            .nav-menu.active { display: flex; }
+            .hamburger { display: block; }
+            .hero h1 { font-size: 32px; }
+            .about-grid, .contact-container { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-wrapper">
+            <div class="logo">Allesa<span>Karya</span></div>
+            <div class="hamburger" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+            <nav>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#home" class="nav-link">Beranda</a></li>
+                    <li><a href="#about" class="nav-link">Profil</a></li>
+                    <li><a href="#services" class="nav-link">Layanan</a></li>
+                    <li><a href="#portfolio" class="nav-link">Katalog</a></li>
+                    <li><a href="#contact" class="nav-link">Kontak</a></li>
+                </ul>
+            </nav>
+            <a href="https://wa.me/628985959418?text=Halo%20Pak%20Sulaiman,%20saya%20tertarik%20konsultasi%20desain%20rumah" class="btn-cta"><i class="fab fa-whatsapp"></i> Konsultasi</a>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <h1>Solusi Terpadu Desain Hingga Bangun Rumah</h1>
+            <p>Mewujudkan rumah impian yang sesuai desain, terkontrol biayanya, dan nyaman dihuni bersama Civil Engineer berpengalaman.</p>
+            <a href="#portfolio" class="btn-cta">Lihat Katalog Proyek</a>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-img">
+                    <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Sulaiman ST Civil Engineer">
+                </div>
+                <div class="about-text">
+                    <h2>Tentang AllesaKarya</h2>
+                    <h3>Sulaiman, ST (Civil Engineer)</h3>
+                    
+                    <p style="text-align: justify;">
+                        Saya SULAIMAN, ST bergerak di bidang perencanaan dan pembangunan rumah hunian dengan sistem kerja terintegrasi, 
+                        mulai dari desain 3D visual, gambar kerja teknis, perhitungan anggaran biaya, hingga pelaksanaan pembangunan di lapangan. 
+                        Fokus saya adalah menghadirkan rumah yang sesuai desain, terkontrol biayanya, dan nyaman dihuni.
+                    </p>
+                    
+                    <div class="stats">
+                        <div class="stat-item">
+                            <h4>10+</h4>
+                            <p>Tahun Pengalaman</p>
+                        </div>
+                        <div class="stat-item">
+                            <h4>16+</h4>
+                            <p>Proyek Selesai</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="section bg-light">
+        <div class="container">
+            <div class="section-title">
+                <p>Lingkup Pekerjaan</p>
+                <h2>Layanan Profesional Kami</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-laptop-house service-icon"></i>
+                    <h3>Desain 3D Realistis</h3>
+                    <p>Visualisasi konsep rumah modern minimalis yang detail sebelum mulai dibangun agar sesuai ekspektasi.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-drafting-compass service-icon"></i>
+                    <h3>Gambar Kerja Teknis</h3>
+                    <p>Panduan lengkap (DED) untuk tukang/kontraktor agar pelaksanaan presisi dan struktur kuat.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-calculator service-icon"></i>
+                    <h3>Perhitungan RAB</h3>
+                    <p>Rencana Anggaran Biaya yang transparan dan detail untuk menghindari pembengkakan biaya.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-hard-hat service-icon"></i>
+                    <h3>Pelaksanaan & Pengawasan</h3>
+                    <p>Jasa kontraktor/borongan rumah tinggal dengan pengawasan langsung oleh insinyur sipil.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="section">
+        <div class="container">
+            <div class="section-title">
+                <p>Portfolio</p>
+                <h2>Katalog Proyek Terpilih</h2>
+            </div>
+            <div class="portfolio-grid" id="portfolioContainer"></div>
+        </div>
+    </section>
+
+    <section class="section bg-light">
+        <div class="container">
+            <div class="section-title">
+                <h2>Alur Kerja Kami</h2>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="step-number">1</div>
+                    <div><h4>Konsultasi & Survei</h4><p>Diskusi kebutuhan ruang, budget, dan cek lokasi lahan.</p></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="step-number">2</div>
+                    <div><h4>Konsep Desain & 3D</h4><p>Pembuatan denah dan visualisasi fasad bangunan.</p></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="step-number">3</div>
+                    <div><h4>Gambar Kerja & RAB</h4><p>Detail teknis untuk tukang dan perhitungan biaya material.</p></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="step-number">4</div>
+                    <div><h4>Pelaksanaan (Konstruksi)</h4><p>Pembangunan dengan pengawasan kualitas berkala.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="container">
+            <div class="section-title">
+                <p>Hubungi Kami</p>
+                <h2>Mulai Proyek Anda Hari Ini</h2>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div><h4>Alamat Studio</h4><p>Prumnas Talang Kelapa Blok VI no 647,<br>Kec. Alang-Alang Lebar, Palembang</p></div>
+                    </div>
+                    <div class="contact-info-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <div><h4>WhatsApp / Telepon</h4><p>08985959418</p></div>
+                    </div>
+                    <div class="contact-info-item">
+                        <i class="far fa-envelope"></i>
+                        <div><h4>Email</h4><p>Sulaiman010576@gmail.com</p></div>
+                    </div>
+                    <div style="margin-top: 30px;">
+                        <a href="https://wa.me/628985959418" class="btn-cta" style="display:inline-block; width:100%; text-align:center;">Chat via WhatsApp Sekarang</a>
+                    </div>
+                </div>
+                <div class="map-container">
+                   <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3984.542861548559!2d104.6820549!3d-2.9399166999999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMsKwNTYnMjMuNyJTIDEwNMKwNDEnMDQuNyJF!5e0!3m2!1sid!2sid!4v1707240000000!5m2!1sid!2sid" 
+                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <h3>AllesaKarya</h3>
+            <p>Jasa Perencana & Pelaksana Rumah Hunian Berbasis Desain 3D, Jasa Desain 3D, Gambar Kerja & Bangun Rumah, Solusi Terpadu Desain sampai Pembangunan Rumah</p>
+            <p>© 2024 AllesaKarya. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // --- 1. BAGIAN UNTUK MENGEDIT DATA PROYEK ---
+        // Anda cukup mengubah teks di dalam tanda kutip "..." di bawah ini
+        const dataProyek = [
+            {
+                judul: "Rumah Modern Minimalis",
+                klien: "Klien: Bpk. Frans Gustian (LB 147m²)",
+                gambar: "Proyek 1.Jpg"
+            },
+            {
+                judul: "Perencanaan rumah tinggal 2 lantai",
+                klien: "Klien: Pak Besti Indrawan",
+                gambar: "Proyek 2.Jpg"
+            },
+            {
+                judul: "Rencana Pembangunan Rumah Produksi/Caffe",
+                klien: "Klien: Ibu Sundari",
+                gambar: "Proyek 3.JPG"
+            },
+            {
+                judul: "Perencanaan rumah tinggal 1 lantai bergaya modern minimalis",
+                klien: "Klien:Ibu Marini.SE",
+                gambar: "Proyek 4.Jpg"
+            },
+            {
+                judul: "Gambar 3D Rencana Landscape PLTU SUMSEL 1",
+                klien: "Klien: Subcon landscape",
+                gambar: "Proyek 5.Jpg"
+            },
+            {
+                judul: "Gambar Ulang RSIA Marisa-Plaju dalam Rangka Pemenuhan Dokumen Sertifikasi Kelas Rumah Sakit",
+                klien: "Klien: RSIA Marisa-Plaju",
+                gambar: "Proyek 6.Jpg"
+            },
+            {
+                judul: "Rencana Pembangunan Rumah Tinggal",
+                klien: "Klien: dr. FEBRIYANI",
+                gambar: "Proyek 7.Jpg"
+	    },
+            {
+                judul: "Rencana Rumah Tradisional",
+                klien: "Klien: Bp. Junaidi",
+                gambar: "Proyek 8.Jpg"
+	    }
+
+        ];
+
+        // --- 2. LOGIKA RENDER WEBSITE (JANGAN DIUBAH) ---
+        const portfolioContainer = document.getElementById('portfolioContainer');
+
+        dataProyek.forEach(proyek => {
+            const htmlItem = `
+                <div class="portfolio-item">
+                    <img src="${proyek.gambar}" alt="${proyek.judul}">
+                    <div class="portfolio-overlay">
+                        <h4>${proyek.judul}</h4>
+                        <p>${proyek.klien}</p>
+                    </div>
+                </div>
+            `;
+            portfolioContainer.innerHTML += htmlItem;
+        });
+
+        // Toggle Menu Mobile
+        function toggleMenu() {
+            var menu = document.getElementById("navMenu");
+            menu.classList.toggle("active");
+        }
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+                if(window.innerWidth < 768) toggleMenu();
+            });
+        });
+    </script>
+</body>
+</html>
